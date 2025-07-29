@@ -12,13 +12,15 @@ import Contact from './components.js/contact';
 
 const AppWrapper = () => {
   const location = useLocation();
-  const hideNav = location.pathname === '/' || location.pathname === '/signup' || location.pathname === '/login';
+  // Hide Navbar only on signup and login pages
+  const hideNav = location.pathname === '/signup' || location.pathname === '/login';
 
   return (
     <>
       {!hideNav && <Nav />}
       <Routes>
-        <Route path='/' element={<Signup />} />
+        {/* Set Home as the main page */}
+        <Route path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Home />} />
