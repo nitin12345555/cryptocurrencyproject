@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    }
+  ],
+  "env": {
+    "MONGO_CONN": "@your-mongo-conn",
+    "JWT_SECRET": "@your-jwt-secret",
+    "FRONTEND_URL": "@your-frontend-url"
+  }
+}
