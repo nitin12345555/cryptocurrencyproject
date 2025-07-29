@@ -1,4 +1,4 @@
-import React, { useEffect, useState, forwardRef } from "react"; 
+import React, { useEffect, useState, forwardRef } from "react";
 import '../all css/price.css';
 import Bitcoin from '../assets/bitcoin (1).png';
 import Ethereum from '../assets/ethereum.png';
@@ -49,7 +49,7 @@ const Pricing = forwardRef((props, ref) => {
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
- 
+
     <div className="Coin-price" ref={ref}>
       {coins.map(({ id, name, img }) => {
         const priceData = prices[id];
