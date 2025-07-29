@@ -1,5 +1,5 @@
 import React from "react";
-import "../all css/support.css";
+import '../all css/support.css';
 import supportIcon from "../assets/24 support.png";
 import communityIcon from "../assets/community.png";
 import certificateIcon from "../assets/certificate.png";
