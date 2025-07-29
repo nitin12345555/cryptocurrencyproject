@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(""); // Keep message for client-side feedback
     const navigate = useNavigate();
 
     useEffect(() => {
+        // If a user is already "logged in" (simulated), redirect to home
         if (localStorage.getItem("user")) {
             navigate("/home");
         }
@@ -20,34 +20,21 @@ const Login = () => {
         setTimeout(() => setMessage(""), 3000);
     };
 
-    const collectData = async () => {
+    const collectData = () => {
         if (!email || !password) {
             showMessage("Enter both email and password");
             return;
         }
 
-        setLoading(true);
-        try {
-            const res = await fetch("https://crypto-currency-project-ug6h.vercel.app/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const data = await res.json();
-            setLoading(false);
-
-            if (res.ok) {
-                localStorage.setItem("user", JSON.stringify(data));
-                navigate("/home");
-            } else {
-                showMessage(data.message || data.error || "Login failed");
-            }
-        } catch (err) {
-            console.error("Login fetch error:", err);
-            setLoading(false);
-            showMessage("Something went wrong. Please try again.");
-        }
+        // Simulate successful login without API call
+        const dummyUser = {
+            id: "simulated-user-id",
+            name: "Simulated User",
+            email: email
+        };
+        localStorage.setItem("user", JSON.stringify(dummyUser));
+        showMessage("Login successful!");
+        navigate("/home");
     };
 
     return (
@@ -67,8 +54,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="inputBox"
             />
-            <button onClick={collectData} disabled={loading} className="login">
-                {loading ? "Logging in..." : "Login"}
+            <button onClick={collectData} className="login">
+                Login
             </button>
             {message && <div className="message-box">{message}</div>}
             <p className="switch-auth">
