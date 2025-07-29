@@ -6,11 +6,11 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(""); // Keep message for client-side feedback
   const navigate = useNavigate();
 
   useEffect(() => {
+    // If a user is already "logged in" (simulated), redirect to home
     if (localStorage.getItem("user")) {
       navigate("/home");
     }
@@ -21,34 +21,15 @@ const Signup = () => {
     setTimeout(() => setMessage(""), 3000);
   };
 
-  const collectData = async () => {
+  const collectData = () => {
     if (!name || !email || !password) {
       showMessage("Please fill all fields");
       return;
     }
 
-    setLoading(true);
-    try {
-      const res = await fetch("https://crypto-currency-project-ug6h.vercel.app/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
-
-      const data = await res.json();
-      setLoading(false);
-
-      if (res.ok) {
-        showMessage("Signup successful! Please login.");
-        navigate("/login");
-      } else {
-        showMessage(data.error || "Signup failed");
-      }
-    } catch (err) {
-      console.error("Signup error:", err);
-      showMessage("Something went wrong. Please try again.");
-      setLoading(false);
-    }
+    // Simulate successful signup without API call
+    showMessage("Signup successful! Please login.");
+    navigate("/login");
   };
 
   return (
@@ -75,8 +56,8 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         className="inputBox"
       />
-      <button onClick={collectData} disabled={loading} className="signup">
-        {loading ? "Signing up..." : "Sign Up"}
+      <button onClick={collectData} className="signup">
+        Sign Up
       </button>
       <p className="switch-auth">
         Already have an account? <Link to="/login">Login</Link>
@@ -85,5 +66,3 @@ const Signup = () => {
     </div>
   );
 };
-
-export default Signup;
