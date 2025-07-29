@@ -1,3 +1,4 @@
+// src/components.js/signup.js
 import React, { useState, useEffect } from "react";
 import "../all css/signup.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -66,3 +67,5 @@ const Signup = () => {
     </div>
   );
 };
+
+export default Signup;
