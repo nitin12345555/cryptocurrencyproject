@@ -5,7 +5,7 @@ import '../App.css';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const isLoginPage = location.pathname === '/login';
@@ -23,7 +23,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem('user');
     setUser(null);
-    window.location.href = "/login";
+    window.location.href = "/login"; // Redirect to login after logout
   };
 
   const toggleMobileMenu = () => {
@@ -33,6 +33,13 @@ const Navbar = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  // Hide Navbar only on signup and login pages
+  const hideNav = isLoginPage || isSignupPage;
+
+  if (hideNav) {
+    return null; // Don't render Navbar on these pages
+  }
 
   return (
     <nav className="nav-container">
@@ -79,8 +86,8 @@ const Navbar = () => {
         </div>
       </div>
 
-    
-      <ul className="nav-ul desktop-only"> 
+
+      <ul className="nav-ul desktop-only">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/Pricing">Pricing</Link></li>
         <li><Link to="/Work">Work</Link></li>
@@ -88,7 +95,7 @@ const Navbar = () => {
         <li><Link to="/contact">Contact</Link></li>
       </ul>
 
-      <div className="nav-buttons desktop-only"> 
+      <div className="nav-buttons desktop-only">
         {!user && !isLoginPage && (
           <Link to="/login">
             <button className="login-button">Login</button>
