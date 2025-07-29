@@ -14,8 +14,9 @@
     }
   ],
   "env": {
-    "MONGO_CONN": "@your-mongo-conn",
-    "JWT_SECRET": "@your-jwt-secret",
-    "FRONTEND_URL": "@your-frontend-url"
+    "PORT": "8080",
+    "MONGO_CONN": "mongodb+srv://nitin12jnagid09:8KnCjMh76H14a3FF@users.vfdtqdv.mongodb.net/auth-db?retryWrites=true&w=majority&appName=users",
+    "JWT_SECRET": "secret-123",
+    "FRONTEND_URL": "http://localhost:3000"
   }
 }
