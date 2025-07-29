@@ -3,7 +3,7 @@ import Bitcoin from '../assets/bitcoin (1).png';
 import Ethereum from '../assets/ethereum.png';
 import Solana from '../assets/solana.png';
 import Bnb from '../assets/bnb.png';
-import Usdc from '../assets/usdc.png'; 
+import Usdc from '../assets/usdc.png';
 import '../all css/Work.css';
 
 import Fullstack from '../assets/fullstack.png';
@@ -28,8 +28,7 @@ const Work = () => {
   return (
     <div className="work-section-wrapper">
       <div className="work-grid">
-        
- 
+
         <div>
           <div className="Work-heading">
             <h3>
