@@ -28,7 +28,7 @@ const Login = () => {
 
         setLoading(true);
         try {
-            const res = await fetch("https://crypto-currency-project-p6xb.vercel.app/auth/login", {
+            const res = await fetch("https://crypto-currency-project-seven.vercel.app/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
